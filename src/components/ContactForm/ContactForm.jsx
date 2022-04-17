@@ -20,11 +20,15 @@ export const ContactForm = ({ onSubmitForm }) => {
   const {
     register,
     handleSubmit,
+    reset,
     formState: { errors },
   } = useForm({
     resolver: yupResolver(schema),
   });
-  const onSubmit = values => onSubmitForm(values);
+  const onSubmit = values => {
+    onSubmitForm(values);
+    reset();
+  };
 
   return (
     <Form onSubmit={handleSubmit(onSubmit)}>
