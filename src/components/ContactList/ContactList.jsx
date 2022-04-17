@@ -1,18 +1,5 @@
 import PropTypes from 'prop-types';
-import styled from 'styled-components';
-
-const List = styled.ul`
-  padding-left: 0;
-`;
-const Item = styled.li`
-  display: flex;
-  justify-content: space-between;
-  width: 350px;
-  font-size: 20px;
-  &:not(:last-child) {
-    margin-bottom: 10px;
-  }
-`;
+import { List, Item } from './ContactList.styled';
 
 const ContactList = ({ contacts, onDeleteContact }) => {
   return (

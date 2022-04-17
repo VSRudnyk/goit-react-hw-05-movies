@@ -1,14 +1,5 @@
 import PropTypes from 'prop-types';
-import styled from 'styled-components';
-
-const Form = styled.form`
-  display: flex;
-  flex-direction: column;
-`;
-
-const Input = styled.input`
-  width: 150px;
-`;
+import { Form, Input } from './Filter.styled';
 
 const Filter = ({ value, onChange }) => {
   return (

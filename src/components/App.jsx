@@ -3,6 +3,7 @@ import { nanoid } from 'nanoid';
 import { ContactForm } from './ContactForm';
 import ContactList from './ContactList';
 import Filter from './Filter';
+import { Container } from './App.styled';
 
 const App = () => {
   const [contacts, setContacts] = useState(() => {
@@ -49,14 +50,14 @@ const App = () => {
   const visibleContacts = getVisibleContacts();
 
   return (
-    <div className="container">
+    <Container>
       <h1>Phonebook</h1>
-      <ContactForm onSubmit={addContact} />
+      <ContactForm onSubmitForm={addContact} />
 
       <h2>Contacts</h2>
       <Filter value={filter} onChange={changeFilter} />
       <ContactList onDeleteContact={deleteContact} contacts={visibleContacts} />
-    </div>
+    </Container>
   );
 };
 
