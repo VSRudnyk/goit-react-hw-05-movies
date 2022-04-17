@@ -14,7 +14,13 @@ const Filter = ({ value, onChange }) => {
   return (
     <Form>
       <label htmlFor="filter">Find contact by name</label>
-      <Input type="text" id="filter" onChange={onChange} value={value} />
+      <Input
+        type="text"
+        id="filter"
+        onChange={onChange}
+        value={value}
+        autoComplete="off"
+      />
     </Form>
   );
 };
