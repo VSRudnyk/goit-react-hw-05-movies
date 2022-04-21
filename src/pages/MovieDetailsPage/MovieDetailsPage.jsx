@@ -25,7 +25,7 @@ export const MovieDetailsPage = () => {
     fetchitem();
   }, [itemId]);
 
-  const { poster_path, original_title, vote_average, overview, genres } = item;
+  const { poster_path, original_title, vote_average, overview } = item;
 
   return (
     <main>
