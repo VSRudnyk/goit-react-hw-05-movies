@@ -30,10 +30,7 @@ export const HomePage = () => {
   return (
     <main>
       <h1>Trending today</h1>
-      {loading && (
-        <InfinitySpin color="grey" />
-        // <Audio height="100" width="100" color="grey" ariaLabel="loading" />
-      )}
+      {loading && <InfinitySpin color="grey" />}
       {!error && (
         <ul>
           {items.map(item => (
