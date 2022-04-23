@@ -1,4 +1,4 @@
-import { useParams } from 'react-router-dom';
+import { useParams, Link, Outlet } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { getMoviesById } from 'services/movies-api';
 import { InfinitySpin } from 'react-loader-spinner';
@@ -36,30 +36,39 @@ export const MovieDetailsPage = () => {
   return (
     <main>
       {loading && <InfinitySpin color="grey" />}
-      {item.length !== 0 && (
-        <Container>
-          <button type="button">Go back</button>
-          {!error && (
-            <Card>
-              <img
-                src={`https://image.tmdb.org/t/p/w300${poster_path}`}
-                alt={original_title}
-              />
-              <div>
-                <h1>{original_title}</h1>
-                <ScoreContainer>
-                  <Score>User Score:</Score>
-                  <p>{vote_average}</p>
-                </ScoreContainer>
-                <h3>Overview: </h3>
-                <p>{overview}</p>
-                <h3>Genres</h3>
-                <p>{genres.map(genre => genre.name).join(', ')}</p>
-              </div>
-            </Card>
-          )}
-        </Container>
-      )}
+      <Container>
+        <button type="button">
+          <Link to="/">Go back</Link>
+        </button>
+        {item.length !== 0 && (
+          <Card>
+            <img
+              src={`https://image.tmdb.org/t/p/w300${poster_path}`}
+              alt={original_title}
+            />
+            <div>
+              <h1>{original_title}</h1>
+              <ScoreContainer>
+                <Score>User Score:</Score>
+                <p>{vote_average}</p>
+              </ScoreContainer>
+              <h3>Overview: </h3>
+              <p>{overview}</p>
+              <h3>Genres</h3>
+              <p>{genres.map(genre => genre.name).join(', ')}</p>
+            </div>
+          </Card>
+        )}
+        <ul>
+          <li>
+            <Link to="cast">Cast</Link>
+          </li>
+          <li>
+            <Link to="reviews">Reviews</Link>
+          </li>
+        </ul>
+        <Outlet />
+      </Container>
     </main>
   );
 };
