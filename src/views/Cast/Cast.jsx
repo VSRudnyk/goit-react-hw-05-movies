@@ -11,7 +11,6 @@ const useFetcCasts = () => {
     async function fetchCasts() {
       try {
         const casts = await getMovieCast(itemId);
-        console.log(casts);
         setCasts(casts);
       } catch (error) {
         setError(error);
@@ -33,9 +32,14 @@ export const Cast = () => {
           {casts.cast.map(({ id, profile_path, character, name }) => (
             <li key={id}>
               <img
-                src={`https://image.tmdb.org/t/p/w300${profile_path}`}
+                src={
+                  profile_path
+                    ? `https://image.tmdb.org/t/p/w300${profile_path}`
+                    : 'https://www.diabetes.ie/wp-content/uploads/2017/02/no-image-available-250x417.png'
+                }
                 alt={name}
               />
+
               <p>{name}</p>
               <p>Character: {character}</p>
             </li>

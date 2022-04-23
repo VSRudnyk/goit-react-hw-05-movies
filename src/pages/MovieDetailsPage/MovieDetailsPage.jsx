@@ -40,7 +40,7 @@ export const MovieDetailsPage = () => {
         <button type="button">
           <Link to="/">Go back</Link>
         </button>
-        {item.length !== 0 && (
+        {item.length !== 0 && !error && (
           <Card>
             <img
               src={`https://image.tmdb.org/t/p/w300${poster_path}`}
