@@ -3,7 +3,8 @@ import { useEffect, useState } from 'react';
 import { getMoviesById } from 'services/movies-api';
 import { InfinitySpin } from 'react-loader-spinner';
 import { Container } from 'components/Layout/Layout.styled';
-import { Card, Score, ScoreContainer } from './MovieDetailsPage.styled';
+import { MovieMarkup } from 'components/MovieMarkup/MovieMarkup';
+import { AdditionalInformation } from 'components/AdditionalInformation/AdditionalInformation';
 
 const useFetchItem = () => {
   const { itemId } = useParams();
@@ -31,7 +32,6 @@ const useFetchItem = () => {
 
 export const MovieDetailsPage = () => {
   const { item, loading, error } = useFetchItem();
-  const { poster_path, original_title, vote_average, overview, genres } = item;
 
   return (
     <main>
@@ -40,33 +40,8 @@ export const MovieDetailsPage = () => {
         <button type="button">
           <Link to="/">Go back</Link>
         </button>
-        {item.length !== 0 && !error && (
-          <Card>
-            <img
-              src={`https://image.tmdb.org/t/p/w300${poster_path}`}
-              alt={original_title}
-            />
-            <div>
-              <h1>{original_title}</h1>
-              <ScoreContainer>
-                <Score>User Score:</Score>
-                <p>{vote_average}</p>
-              </ScoreContainer>
-              <h3>Overview: </h3>
-              <p>{overview}</p>
-              <h3>Genres</h3>
-              <p>{genres.map(genre => genre.name).join(', ')}</p>
-            </div>
-          </Card>
-        )}
-        <ul>
-          <li>
-            <Link to="cast">Cast</Link>
-          </li>
-          <li>
-            <Link to="reviews">Reviews</Link>
-          </li>
-        </ul>
+        <MovieMarkup item={item} error={error} />
+        <AdditionalInformation />
         <Outlet />
       </Container>
     </main>

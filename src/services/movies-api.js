@@ -21,3 +21,17 @@ export const getMovieCast = async id => {
   );
   return respons.data;
 };
+
+export const getMovieReviews = async id => {
+  const respons = await axios.get(
+    `${BASE_URL}movie/${id}/reviews?api_key=${API_KEY}`
+  );
+  return respons.data;
+};
+
+export const getMovieByQuery = async query => {
+  const respons = await axios.get(
+    `${BASE_URL}search/movie/?api_key=${API_KEY}&query=${query}`
+  );
+  return respons.data;
+};

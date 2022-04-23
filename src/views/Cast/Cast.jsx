@@ -41,7 +41,7 @@ export const Cast = () => {
               />
 
               <p>{name}</p>
-              <p>Character: {character}</p>
+              <p>Character: {character || 'Unknown'}</p>
             </li>
           ))}
         </ul>
