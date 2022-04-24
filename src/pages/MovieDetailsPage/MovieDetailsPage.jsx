@@ -30,7 +30,7 @@ const useFetchItem = () => {
   return { item, loading, error };
 };
 
-export const MovieDetailsPage = () => {
+export default function MovieDetailsPage() {
   const { item, loading, error } = useFetchItem();
 
   return (
@@ -43,4 +43,4 @@ export const MovieDetailsPage = () => {
       </Container>
     </main>
   );
-};
+}

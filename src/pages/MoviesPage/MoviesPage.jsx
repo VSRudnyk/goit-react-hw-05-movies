@@ -17,7 +17,7 @@ const schema = yup.object().shape({
     .required('Required'),
 });
 
-export const MoviesPage = () => {
+export default function MoviesPage() {
   const [searchParams, setSearchParams] = useSearchParams();
   const [item, setItem] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -74,4 +74,4 @@ export const MoviesPage = () => {
       )}
     </main>
   );
-};
+}

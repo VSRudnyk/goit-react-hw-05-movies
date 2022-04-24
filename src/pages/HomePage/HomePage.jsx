@@ -25,7 +25,7 @@ const useFetchItems = () => {
   return { items, loading, error };
 };
 
-export const HomePage = () => {
+export default function HomePage() {
   const { items, loading, error } = useFetchItems();
   return (
     <main>
@@ -42,4 +42,4 @@ export const HomePage = () => {
       )}
     </main>
   );
-};
+}
