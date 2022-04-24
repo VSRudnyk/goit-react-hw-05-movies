@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const BASE_URL = 'https://api.themoviedb.org/3/';
+const BASE_URL = 'http://api.themoviedb.org/3/';
 const API_KEY = 'b799de2e1359641dffd47460cedfbdc0';
 
 export const getTrendingMovies = async () => {
@@ -31,7 +31,7 @@ export const getMovieReviews = async id => {
 
 export const getMovieByQuery = async query => {
   const respons = await axios.get(
-    `${BASE_URL}search/movie/?api_key=${API_KEY}&query=${query}`
+    `${BASE_URL}search/movie?api_key=${API_KEY}&query=${query}`
   );
   return respons.data;
 };
