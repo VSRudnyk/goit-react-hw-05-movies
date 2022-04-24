@@ -1,7 +1,7 @@
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as yup from 'yup';
 import { getMovieByQuery } from 'services/movies-api';
-import { Link } from 'react-router-dom';
+import { Link, useSearchParams } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { InfinitySpin } from 'react-loader-spinner';
 
@@ -18,19 +18,21 @@ const schema = yup.object().shape({
 });
 
 export const MoviesPage = () => {
+  const [searchParams, setSearchParams] = useSearchParams();
   const [item, setItem] = useState([]);
-  const [searchMovies, setSearchMovies] = useState('');
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
+  const query = searchParams.get('query');
+
   useEffect(() => {
-    if (searchMovies === '') {
+    if (!query) {
       return;
     }
     async function fetchItem() {
       setLoading(true);
       try {
-        const item = await getMovieByQuery(searchMovies);
+        const item = await getMovieByQuery(query);
         setItem(item.results);
       } catch (error) {
         setError(error);
@@ -39,12 +41,10 @@ export const MoviesPage = () => {
       }
     }
     fetchItem();
-  }, [searchMovies]);
+  }, [query]);
 
   const handleSubmit = ({ searchMovies }, { resetForm }) => {
-    setSearchMovies(searchMovies);
-    console.log();
-
+    setSearchParams({ query: searchMovies });
     resetForm();
   };
 
@@ -58,8 +58,10 @@ export const MoviesPage = () => {
         <Form>
           <Field type="text" name="searchMovies" placeholder="Search movies" />
           <ErrorMessage name="searchMovies" />
+          <button type="submit">Search</button>
         </Form>
       </Formik>
+
       {loading && <InfinitySpin color="grey" />}
       {item.length !== 0 && !error && (
         <ul>

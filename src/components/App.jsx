@@ -3,7 +3,6 @@ import { HomePage, MoviesPage, MovieDetailsPage } from 'pages';
 import { Cast } from 'views/Cast/Cast';
 import { Reviews } from 'views/Reviews/Reviews';
 import { Layout } from './Layout/Layout';
-// import { Layout } from './Layout/Layout';
 
 export const App = () => {
   return (

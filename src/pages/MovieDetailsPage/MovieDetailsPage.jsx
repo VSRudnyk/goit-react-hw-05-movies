@@ -1,4 +1,4 @@
-import { useParams, Link, Outlet } from 'react-router-dom';
+import { useParams, Outlet } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { getMoviesById } from 'services/movies-api';
 import { InfinitySpin } from 'react-loader-spinner';
@@ -37,9 +37,6 @@ export const MovieDetailsPage = () => {
     <main>
       {loading && <InfinitySpin color="grey" />}
       <Container>
-        <button type="button">
-          <Link to="/">Go back</Link>
-        </button>
         <MovieMarkup item={item} error={error} />
         <AdditionalInformation />
         <Outlet />

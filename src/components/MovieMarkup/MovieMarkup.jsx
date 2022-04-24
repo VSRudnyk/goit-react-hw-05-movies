@@ -1,9 +1,13 @@
 import { Card, Score, ScoreContainer } from './MovieMarkpu.styled';
+import { Link } from 'react-router-dom';
 
 export const MovieMarkup = ({ item, error }) => {
   const { poster_path, original_title, vote_average, overview, genres } = item;
   return (
     <div>
+      <button type="button">
+        <Link to="/">Go back</Link>
+      </button>
       {item.length !== 0 && !error && (
         <Card>
           <img
