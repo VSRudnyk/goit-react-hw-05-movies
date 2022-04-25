@@ -1,4 +1,4 @@
-import { lazy, Suspense } from 'react';
+import { lazy } from 'react';
 import { Routes, Route, Navigate } from 'react-router-dom';
 import { Cast } from 'views/Cast/Cast';
 import { Reviews } from 'views/Reviews/Reviews';
@@ -13,7 +13,7 @@ const MovieDetailsPage = lazy(() =>
 
 export const App = () => {
   return (
-    <Suspense fallback="">
+    <>
       <GlobalStyle />
       <Routes>
         <Route path="/" element={<Layout />}>
@@ -26,6 +26,6 @@ export const App = () => {
           <Route path="*" element={<Navigate to="/" />} />
         </Route>
       </Routes>
-    </Suspense>
+    </>
   );
 };

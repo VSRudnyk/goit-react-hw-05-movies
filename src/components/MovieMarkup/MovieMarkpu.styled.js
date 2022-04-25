@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import { Link } from 'react-router-dom';
 
 export const Card = styled.div`
   margin-top: 25px;
@@ -19,12 +18,4 @@ export const ScoreContainer = styled.div`
 
 export const Main = styled.main`
   margin-top: 25px;
-`;
-
-export const GoBack = styled(Link)`
-  padding: 0 8px;
-  text-decoration: none;
-  outline: 1px solid;
-  border-radius: 4px;
-  color: #212121;
 `;
