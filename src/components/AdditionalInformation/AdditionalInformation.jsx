@@ -1,14 +1,18 @@
-import { Link } from 'react-router-dom';
+import { ItemLink, Title } from './AdditionalInformation.styled';
 
 export const AdditionalInformation = () => {
   return (
-    <ul>
-      <li>
-        <Link to="cast">Cast</Link>
-      </li>
-      <li>
-        <Link to="reviews">Reviews</Link>
-      </li>
-    </ul>
+    <>
+      <Title>Additional information</Title>
+      <ul>
+        <li>
+          <ItemLink to="cast">Cast</ItemLink>
+        </li>
+        <li>
+          <ItemLink to="reviews">Reviews</ItemLink>
+        </li>
+      </ul>
+      <hr />
+    </>
   );
 };

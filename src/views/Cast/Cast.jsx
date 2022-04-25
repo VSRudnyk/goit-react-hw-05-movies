@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { getMovieCast } from 'services/movies-api';
+import { Item, Container, ProfileImage } from './Cast.styled';
 
 const useFetcCasts = () => {
   const { itemId } = useParams();
@@ -26,12 +27,12 @@ export const Cast = () => {
   const { casts, error } = useFetcCasts();
 
   return (
-    <div>
+    <Container>
       {casts.length !== 0 && !error && (
         <ul>
           {casts.cast.map(({ id, profile_path, character, name }) => (
-            <li key={id}>
-              <img
+            <Item key={id}>
+              <ProfileImage
                 src={
                   profile_path
                     ? `https://image.tmdb.org/t/p/w300${profile_path}`
@@ -39,13 +40,14 @@ export const Cast = () => {
                 }
                 alt={name}
               />
-
-              <p>{name}</p>
-              <p>Character: {character || 'Unknown'}</p>
-            </li>
+              <div>
+                <p>{name}</p>
+                <p>Character: {character || 'Unknown'}</p>
+              </div>
+            </Item>
           ))}
         </ul>
       )}
-    </div>
+    </Container>
   );
 };

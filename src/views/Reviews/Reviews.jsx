@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { getMovieReviews } from 'services/movies-api';
+import { Text } from './Reviews.styled';
 
 const useFetcReviews = () => {
   const { itemId } = useParams();
@@ -31,7 +32,7 @@ export const Reviews = () => {
         <ul>
           {reviews.results.map(({ id, author, content }) => (
             <li key={id}>
-              <p>Author: {author}</p>
+              <Text>Author: {author}</Text>
               <p>{content}</p>
             </li>
           ))}

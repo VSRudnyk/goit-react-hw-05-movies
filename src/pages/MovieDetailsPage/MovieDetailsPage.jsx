@@ -2,7 +2,7 @@ import { useParams, Outlet } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { getMoviesById } from 'services/movies-api';
 import { InfinitySpin } from 'react-loader-spinner';
-import { Container } from 'components/Layout/Layout.styled';
+import { Container } from './MovieDetailsPage.styled';
 import { MovieMarkup } from 'components/MovieMarkup/MovieMarkup';
 import { AdditionalInformation } from 'components/AdditionalInformation/AdditionalInformation';
 

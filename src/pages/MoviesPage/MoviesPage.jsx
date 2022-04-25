@@ -1,9 +1,20 @@
-import { Formik, Form, Field, ErrorMessage } from 'formik';
+import { Formik, ErrorMessage } from 'formik';
 import * as yup from 'yup';
 import { getMovieByQuery } from 'services/movies-api';
-import { Link, useSearchParams } from 'react-router-dom';
+import { useSearchParams } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { InfinitySpin } from 'react-loader-spinner';
+import {
+  Container,
+  Main,
+  SearchForm,
+  SearchFormBtn,
+  SearchFormInput,
+  List,
+  Item,
+  ItemLink,
+} from './MoviesPage.styled';
+import { FaSearch } from 'react-icons/fa';
 
 const initialValues = {
   searchMovies: '',
@@ -49,29 +60,39 @@ export default function MoviesPage() {
   };
 
   return (
-    <main>
-      <Formik
-        initialValues={initialValues}
-        validationSchema={schema}
-        onSubmit={handleSubmit}
-      >
-        <Form>
-          <Field type="text" name="searchMovies" placeholder="Search movies" />
-          <ErrorMessage name="searchMovies" />
-          <button type="submit">Search</button>
-        </Form>
-      </Formik>
+    <Main>
+      <Container>
+        <Formik
+          initialValues={initialValues}
+          validationSchema={schema}
+          onSubmit={handleSubmit}
+        >
+          <SearchForm>
+            <SearchFormInput
+              type="text"
+              name="searchMovies"
+              placeholder="Search movies"
+            />
+            <ErrorMessage name="searchMovies" />
+            <SearchFormBtn type="submit">
+              <FaSearch />
+            </SearchFormBtn>
+          </SearchForm>
+        </Formik>
 
-      {loading && <InfinitySpin color="grey" />}
-      {item.length !== 0 && !error && (
-        <ul>
-          {item.map(item => (
-            <li key={item.id}>
-              <Link to={`/movies/${item.id}`}>{item.title || item.name}</Link>
-            </li>
-          ))}
-        </ul>
-      )}
-    </main>
+        {loading && <InfinitySpin color="grey" />}
+        {item.length !== 0 && !error && (
+          <List>
+            {item.map(item => (
+              <Item key={item.id}>
+                <ItemLink to={`/movies/${item.id}`}>
+                  {item.title || item.name}
+                </ItemLink>
+              </Item>
+            ))}
+          </List>
+        )}
+      </Container>
+    </Main>
   );
 }
